@@ -52,7 +52,7 @@ node index.js -m staging -p FILESYSTEM
 
 - DTO del usuario enviado solo con la informacion necesaria del usuario para evitar el envío de información sensible.
 
-<small>Directorio de referencia de la ruta /current</small>
+<small>Directorio de referencia de la ruta /current:</small>
 
 - `/src/repositories/users.repository.js`
 
@@ -63,7 +63,7 @@ Implementación de un sistema de autorización que delimita el acceso en los sig
 - Sólo el administrador puede crear, actualizar y
   eliminar productos.
 
-  <small>Directorios de referencia del role ADMIN en productos</small>
+  <small>Directorios de referencia del role ADMIN en productos:</small>
 
   `/src/components/handlebars/index.js`
 
@@ -71,7 +71,7 @@ Implementación de un sistema de autorización que delimita el acceso en los sig
 
 - Sólo el usuario puede enviar mensajes al chat.
 
-  <small>Directorios de referencia del role User en chat</small>
+  <small>Directorios de referencia del role User en chat:</small>
 
   `/src/components/handlebars/index.js`
 
@@ -79,7 +79,7 @@ Implementación de un sistema de autorización que delimita el acceso en los sig
 
 - Sólo el usuario puede agregar productos al carrito.
 
-  <small>Directorios de referencia del role User en carrito</small>
+  <small>Directorios de referencia del role User en carrito:</small>
 
   `/src/components/handlebars/index.js`
 
@@ -99,7 +99,7 @@ Implementación del modelo Ticket el cual cuenta con todas las formalizaciones d
 
 - purchaser: String, contiene el correo del usuario asociado al carrito.
 
-  <small>Directorio del Modelo Ticket</small>
+  <small>Directorio del Modelo Ticket:</small>
 
   `/src/models/tickets.js`
 
