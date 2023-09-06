@@ -18,7 +18,7 @@ const passport = require('passport');
 const initializePassport = require('./config/passport');
 /* Inicializar factory */
 const Dao = require('./dao/factory');
-/* Faker products */
+/* faker products */
 const { generateFakeProducts } = require('./scripts/generateFakerProducts');
 
 class Server {
