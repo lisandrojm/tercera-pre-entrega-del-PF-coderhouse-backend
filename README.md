@@ -1,83 +1,247 @@
-# tercera_pre-entrega
+# Tercera pre entrega del PF - Coderhouse/Backend
 
-## Testing
+Este repositorio contiene la tercera pre entrega del proyecto final con las siguientes características:
 
-Testing:
+## Objetivos generales
 
-1-Modificar nuestra capa de persistencia para
-aplicar los conceptos de Factory (opcional),
-DAO y DTO.
+- Profesionalización del servidor
 
-2-El DAO seleccionado (por un parámetro en
-línea de comandos como lo hicimos
-anteriormente) será devuelto por una Factory
-para que la capa de negocio opere con él.
-(Factory puede ser opcional)
+## Objetivos específicos
 
-3-Implementar el patrón Repository para
-trabajar con el DAO en la lógica de negocio.
+- Aplicación de una arquitectura profesional en el servidor . Arquitectura SOA (Service Oriented Architecture).
 
-4-Modificar la ruta /current Para evitar enviar
-información sensible, enviar un DTO del
-usuario sólo con la información necesaria.
+- Aplicación de patrones de diseño, mailing y variables de entorno
 
-5-Realizar un middleware que pueda trabajar en
-conjunto con la estrategia “current” para hacer
-un sistema de autorización y delimitar el
-acceso a dichos endpoints:
+## Aspectos incluidos:
 
-5.1-Sólo el administrador puede crear, actualizar y
-eliminar productos.
+### Factory / DAO y DTO
 
-5.2-Sólo el usuario puede enviar mensajes al chat.
+- Conceptos de Factory, DAO y DTO aplicados a la capa de persistencia.
 
-5.3-Sólo el usuario puede agregar productos a su
-carrito.
+- El DAO seleccionado por un parámetro en línea de comandos es devuelto por una Factory para que la capa de negocio opere con él.
 
-6-Crear un modelo Ticket el cual contará con
-todas las formalizaciones de la compra. Éste
-contará con los campos:
+Formato de comandos
 
--Id (autogenerado por mongo)
+```bash
+node indexedDB.js -m <nombre_de_la_variable_de_entorno> -p <nombre_de_la_variable_de_persistencia>
+```
 
--code: String debe autogenerarse y ser único
+Ejemplos de comandos para para inicializar el proyecto con diferentes variables de entorno y capas de persistencia
 
--purchase_datetime: Deberá guardar la
-fecha y hora exacta en la cual se formalizó
-la compra (básicamente es un created_at)
+```bash
+node index.js -m development -p MONGO
+```
 
--amount: Number, total de la compra.
+```bash
+node index.js -m production -p MEMORY
+```
 
--purchaser: String, contendrá el correo del
-usuario asociado al carrito.
+```bash
+node index.js -m staging -p FILESYSTEM
+```
 
-7- Implementar, en el router de carts, la ruta
-/:cid/purchase, la cual permitirá finalizar el
-proceso de compra de dicho carrito.
+### Repository
 
-7.1-La compra debe corroborar el stock del
-producto al momento de finalizarse
+- Implementación del patrón Repository que trabaja con el DAO en la lógica de negocio.
 
-7.1.1-Si el producto tiene suficiente stock para
-la cantidad indicada en el producto del
-carrito, entonces restarlo del stock del
-producto y continuar.
+<small>Directorio de referencia del patrón Repository</small>
 
-7.1.2-Si el producto no tiene suficiente stock
-para la cantidad indicada en el producto
-del carrito, entonces no agregar el
-producto al proceso de compra.
+- `/src/repositories`
 
-7.1.3-Al final, utilizar el servicio de Tickets para
-poder generar un ticket con los datos de la
-compra.
+### Ruta /current
 
-7.1.4-En caso de existir una compra no
-completada, devolver el arreglo con los ids de
-los productos que no pudieron procesarse.
+- DTO del usuario enviado solo con la informacion necesaria del usuario para evitar el envío de información sensible.
 
-7.2-Una vez finalizada la compra, el carrito asociado al
-usuario que compró deberá contener sólo los productos
-que no pudieron comprarse. Es decir, se filtran los que
-sí se compraron y se quedan aquellos que no tenían
-disponibilidad.
+<small>Directorio de referencia de la ruta /current</small>
+
+- `/src/repositories/users.repository.js`
+
+### Middleware de autorización
+
+Implementación de un sistema de autorización que delimita el acceso en los siguientes endpoints:
+
+- Sólo el administrador puede crear, actualizar y
+  eliminar productos.
+
+  <small>Directorios de referencia del role ADMIN en productos</small>
+
+  `/src/components/handlebars/index.js`
+  `/src/components/products/index.js`
+
+- Sólo el usuario puede enviar mensajes al chat.
+
+  <small>Directorios de referencia del role User en chat</small>
+
+  `/src/components/handlebars/index.js`
+  `/src/components/messages/index.js`
+
+- Sólo el usuario puede agregar productos al carrito.
+
+  <small>Directorios de referencia del role User en carrito</small>
+
+  `/src/components/handlebars/index.js`
+  `/src/components/carts/index.js`
+
+### Modelo Ticket
+
+Implementación del modelo Ticket el cual cuenta con todas las formalizaciones de la compra y con los siguientes campos:
+
+- Id: autogenerado por mongo
+
+- code: String debe autogenerarse y ser único
+
+- purchase_datetime: Guarda la fecha y hora en la cual se formalizó la compra.
+
+- amount: Number, total de la compra.
+
+- purchaser: String, contiene el correo del usuario asociado al carrito.
+
+  <small>Directorio del Modelo Ticket</small>
+
+  `/src/models/tickets.js`
+
+### Router de Carts | Ruta /:cid/purchase
+
+Ruta que permite finalizar el proceso de compra de dicho carrito con las siguientes características:
+
+- La compra corrobora el stock del producto al momento de finalizarse.
+  - Si el producto tiene suficiente stock para la cantidad indicada en el producto del carrito,lo resta del stock del producto y continua.
+  - Si el producto no tiene suficiente stock para la cantidad indicada en el producto del carrito, no agrega el producto al proceso de compra.
+  - Al final, se utiliza el servicio de Tickets para generar un ticket con los datos de la compra.
+  - En caso de existir una compra no completada, devuelve el arreglo con los ids de los productos que no pudieron procesarse.
+  - Una vez finalizada la compra, el carrito asociado al usuario que compró contiene sólo los productos que no pudieron comprarse. Es decir, se filtran los que sí se compraron y se quedan aquellos que no tenían disponibilidad.
+
+### Configuración de Variables de Entorno (.env)
+
+- La información delicada está almacenada en un archivo .env. Permite acceder a estos datos a través de variables de entorno, mejorando la seguridad y organización de nuestra aplicación.
+
+## Requisitos
+
+Asegúrate de tener los siguientes requisitos instalados en tu entorno de desarrollo:
+
+- Node.js
+- MongoDB
+
+## Instrucciones de instalación
+
+Sigue estos pasos para instalar y configurar el proyecto:
+
+1. Clona este repositorio en tu máquina local:
+
+   ```bash
+   git clone https://github.com/lisandrojm/desafio_reestructura-de-nuestro-servidor
+   ```
+
+2. Navega al directorio del proyecto:
+
+   ```bash
+   cd desafio_reestructura-de-nuestro-servidor
+   ```
+
+3. Instala las dependencias del proyecto ejecutando el siguiente comando:
+
+   ```bash
+   npm install
+   ```
+
+4. Configura la conexión a la base de datos MongoDB y todas las variables de entorno en el archivo `.env`. Puedes copiar el archivo `.env.example` y renombrarlo a `.env`, luego actualiza los valores con tu configuración:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Asegúrate de tener MongoDB en ejecución , la URL de conexión correcta y todas las variables de entorno configuradas en el archivo `.env`.
+
+5. Inicia la aplicación con el siguiente comando:
+
+   ```bash
+   npm start
+   ```
+
+   Esto iniciará el servidor Node.js y estará escuchando en el puerto especificado en el archivo `.env`.
+
+6. Accede a la aplicación en tu navegador web ingresando la siguiente URL:
+
+   ```
+   http://localhost:<PUERTO_DE_LA_APP>
+   ```
+
+   Asegúrate de reemplazar `<PUERTO_DE_LA_APP>` con el número de puerto especificado en el archivo `.env`.
+
+7. Ahora podrás utilizar la vista de Login en la aplicación.
+
+## Credenciales de Admin para testing de roles de usuario:
+
+### Email:
+
+```
+adminCoder@coder.com
+```
+
+### Password:
+
+```
+adminCod3r123
+```
+
+## Video Testing
+
+## Estructura del proyecto (directorios relevantes para el desafío)
+
+Aquí tienes la estructura del proyecto con descripciones para cada directorio:
+
+El proyecto sigue la siguiente estructura de directorios:
+
+- `/.env`: Variables de entorno.
+
+- `/.env.example`: Archivo de ejemplo que muestra la estructura y variables de entorno requeridas para la configuración de la aplicación.
+
+- `/src/components`: Carpeta contenedora de todos los componentes. Cada componente contiene un archivo index.js con sus rutas, una carpeta de controlador y una de servicios.
+
+- `/src/config`: Archivos de configuración de la aplicación.
+
+  - `/src/config/index.js`: Exporta variables de entorno y configuraciones generales.
+  - `/src/config/mongo.js`: Configuración de Mongoose para establecer la conexión a la base de datos MongoDB.
+  - `/src/config/passport.js`: Configuración de Passport para generar las estrategias de autenticación y autorización.
+
+- `/src/models`: Modelos de datos de la aplicación.
+
+- `/src/public`: Archivos públicos de la aplicación, como estilos CSS, imágenes y scripts JavaScript.
+
+- `/src/routes`: Archivos de definición de rutas de la aplicación.
+
+- `/src/utils`: Archivos relacionados con la configuración de las utilidades reutilizables.
+
+- `/src/views`: Todas las vistas del proyecto.
+
+## Dependencias
+
+El proyecto utiliza las siguientes dependencias:
+
+- **Express.js (v4.18.2):** Framework de Node.js para construir aplicaciones web.
+- **UUID (v9.0.0):** Biblioteca para generar identificadores únicos.
+- **Cors (v2.8.5):** Middleware para permitir peticiones HTTP entre diferentes dominios.
+- **Dotenv (v16.3.1):** Carga variables de entorno desde un archivo .env.
+- **Express-handlebars (v7.0.7):** Motor de plantillas para Express.js.
+- **MongoDB (v5.6.0):** Driver de MongoDB para Node.js.
+- **Mongoose (v7.3.1):** Modelado de objetos de MongoDB para Node.js.
+- **Multer (v1.4.5-lts.1):** Middleware para manejar datos de formulario multipart/form-data.
+- **Socket.io (v4.6.2):** Biblioteca para la comunicación en tiempo real basada en WebSockets.
+- **Sweetalert2 (v11.7.12):** Biblioteca para mostrar mensajes y alertas personalizadas.
+- **Connect-mongo (v5.0.0):** Middleware para almacenar sesiones de Express.js en MongoDB.
+- **Cookie-parser (v1.4.6):** Middleware para analizar cookies en las solicitudes de Express.js.
+- **Express-session (v1.17.3):** Middleware para manejar sesiones en Express.js.
+- **Mongoose-paginate-v2 (v1.7.1):** Plugin de paginación para Mongoose.
+- **Bcrypt (v5.1.0):** Biblioteca para el hashing seguro de contraseñas.
+- **Passport (v0.6.0):** Middleware para autenticación en Node.js.
+- **Passport-github2 (v0.1.12):** Estrategia de autenticación para Passport usando OAuth 2.0 con GitHub.
+- **Passport-local (v1.0.0):** Estrategia de autenticación para Passport basada en credenciales locales.
+- **Jsonwebtoken (v9.0.1):** Biblioteca para generar y verificar tokens JWT.
+
+## DevDependencies
+
+El proyecto utiliza las siguientes devDependencies:
+
+- Nodemon (v2.0.22): Utilidad que monitoriza cambios en los archivos y reinicia automáticamente la aplicación.
+
+Estas dependencias pueden ser instaladas ejecutando el comando `npm install` en el directorio del proyecto.

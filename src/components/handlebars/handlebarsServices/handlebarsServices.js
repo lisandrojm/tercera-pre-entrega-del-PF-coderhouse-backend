@@ -5,7 +5,7 @@ Servicios de handlebars */
 
 const ProductsServices = require('../../products/productsServices/productsServices');
 /* const { Cart } = require('../../../models/carts'); */
-const { User } = require('../../../models/users');
+/* const { User } = require('../../../models/users'); */
 const Handlebars = require('handlebars');
 
 /* Repository */
