@@ -66,6 +66,7 @@ Implementación de un sistema de autorización que delimita el acceso en los sig
   <small>Directorios de referencia del role ADMIN en productos</small>
 
   `/src/components/handlebars/index.js`
+
   `/src/components/products/index.js`
 
 - Sólo el usuario puede enviar mensajes al chat.
@@ -73,6 +74,7 @@ Implementación de un sistema de autorización que delimita el acceso en los sig
   <small>Directorios de referencia del role User en chat</small>
 
   `/src/components/handlebars/index.js`
+
   `/src/components/messages/index.js`
 
 - Sólo el usuario puede agregar productos al carrito.
@@ -80,6 +82,7 @@ Implementación de un sistema de autorización que delimita el acceso en los sig
   <small>Directorios de referencia del role User en carrito</small>
 
   `/src/components/handlebars/index.js`
+
   `/src/components/carts/index.js`
 
 ### Modelo Ticket
