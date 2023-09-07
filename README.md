@@ -299,3 +299,7 @@ El proyecto utiliza las siguientes devDependencies:
 - Nodemon (v2.0.22): Utilidad que monitoriza cambios en los archivos y reinicia automáticamente la aplicación.
 
 Estas dependencias pueden ser instaladas ejecutando el comando `npm install` en el directorio del proyecto.
+
+## Postman Collections
+
+- En la carpeta `postman_collections`, encontrarás los archivos necesarios para importar las colecciones en Postman y realizar pruebas en el proyecto. Las colecciones proporcionan ejemplos de solicitudes HTTP para interactuar con la API y probar su funcionalidad.
