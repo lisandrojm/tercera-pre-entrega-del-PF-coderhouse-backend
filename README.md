@@ -235,8 +235,6 @@ adminCoder@coder.com
 adminCod3r123
 ```
 
-## Video Testing
-
 ## Estructura general del proyecto (directorios relevantes para el desafío)
 
 Aquí tienes la estructura del proyecto con descripciones para cada directorio:
