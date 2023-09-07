@@ -136,9 +136,11 @@ Ruta que permite finalizar el proceso de compra de dicho carrito con las siguien
 `/src/components/carts/cartsServices/cartsServices.js`
 `/src/components/carts/cartsController/cartsController.js`
 
-### Envío de correos | Router de Carts | Ruta /:cid/purchasecart
+### Envío de correos | Router de Carts | Ruta /:cid/purchasecart | Implementación del lado del cliente
 
-En la ruta /:cid/purchasecart se implementó el envío de un correo por medio de la función purchaseCartMail.
+En la ruta /:cid/purchasecart se implementó el envío de un correo por medio de la función purchaseCartMail desde el cliente.
+
+## Ver video
 
 La información que incluye el correo es la siguiente:
 
