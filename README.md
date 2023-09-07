@@ -1,4 +1,4 @@
-# Tercera pre entrega del PF - Coderhouse/Backend
+# Tercera pre entrega del Proyecto Final - Coderhouse/Backend
 
 Este repositorio contiene la tercera pre entrega del proyecto final con las siguientes características:
 
