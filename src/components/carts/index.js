@@ -39,8 +39,8 @@ class Carts extends CustomRouter {
     this.put(`${basePath}/:cid/product/:pid`, ['USER'], cartsController.updateProductQuantity);
     /* ************************************************************************************ */
     /* Nueva ruta purchase */
-    this.post(`${basePath}/:cid/purchase`, ['PUBLIC'], cartsController.purchaseCart);
-    this.post(`${basePath}/:cid/purchasecart`, ['PUBLIC'], cartsController.purchaseCartMail);
+    this.post(`${basePath}/:cid/purchase`, ['USER'], cartsController.purchaseCart);
+    this.post(`${basePath}/:cid/purchasecart`, ['USER'], cartsController.purchaseCartMail);
 
     /* ************************************************************************************ */
     /* Admin */
