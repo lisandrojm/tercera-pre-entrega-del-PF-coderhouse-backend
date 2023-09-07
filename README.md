@@ -10,7 +10,17 @@ Este repositorio contiene la tercera pre entrega del proyecto final con las sigu
 
 - Aplicación de una arquitectura profesional en el servidor . Arquitectura SOA (Service Oriented Architecture).
 
-- Aplicación de patrones de diseño, mailing y variables de entorno
+- El proyecto se encuentra separado por capas.
+
+- Aplicación de patrones de diseño, mailing y variables de entorno.
+
+- El proyecto cuenta con DAO de archivos y DAO de memoria solo para el testing de Factory. También cuenta con DAO de MongoDB el cual es completamente funcional.
+
+- Los endpoints se encuentran protegidos por roles.
+
+- El carrito sólo compra los productos en stock. El ticket se genera con los datos de compra.
+
+- Envío de correos y SMS.
 
 ## Aspectos incluidos:
 
@@ -119,6 +129,36 @@ Ruta que permite finalizar el proceso de compra de dicho carrito con las siguien
   - Al final, se utiliza el servicio de Tickets para generar un ticket con los datos de la compra.
   - En caso de existir una compra no completada, devuelve el arreglo con los ids de los productos que no pudieron procesarse.
   - Una vez finalizada la compra, el carrito asociado al usuario que compró contiene sólo los productos que no pudieron comprarse. Es decir, se filtran los que sí se compraron y se quedan aquellos que no tenían disponibilidad.
+
+<small>Directorios de la ruta /:cid/purchase </small>
+
+`/src/components/carts/index.js`
+`/src/components/carts/cartsServices/cartsServices.js`
+`/src/components/carts/cartsController/cartsController.js`
+
+### Envío de correos | Router de Carts | Ruta /:cid/purchasecart
+
+En la ruta /:cid/purchasecart se implementó el envío de un correo por medio de la función purchaseCartMail.
+
+La información que incluye el correo es la siguiente:
+
+- Ticket Code: Un código único asociado a la compra.
+
+- Username: El correo de usuario del comprador. Este valor se obtiene del token JWT si está presente y decodificado con éxito, o de la sesión del usuario si no se proporciona un token válido.
+
+- Total Products: El número total de productos en el carrito de compras.
+
+- Products Purchased: El número de productos que se pudieron comprar con éxito. Esto es igual al número total de productos menos la cantidad de productos que no pudieron ser comprados debido a la falta de stock.
+
+- Products Not Purchased: El número de productos que no se pudieron comprar debido a la falta de stock. Estos son los productos que se agregaron a la lista productsNotPurchased.
+
+- Productos Comprados: Una lista de los productos comprados, junto con la cantidad de cada uno. Esta lista se genera a partir de la información en productsToPurchase.
+
+<small>Directorios de la ruta /:cid/purchasecart </small>
+
+`/src/components/carts/index.js`
+`/src/components/carts/cartsServices/cartsServices.js`
+`/src/components/carts/cartsController/cartsController.js`
 
 ### Configuración de Variables de Entorno (.env)
 
