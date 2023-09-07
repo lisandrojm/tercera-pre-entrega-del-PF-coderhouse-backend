@@ -142,10 +142,7 @@ En la ruta /:cid/purchasecart se implementó el envío de un correo por medio de
 
 ## Video de test de envío de correos
 
-
 https://github.com/lisandrojm/tercera_pre_entrega_del_PF/assets/35199683/f5b2c8c9-145f-4354-b3aa-fff475d44c18
-
-
 
 La información que incluye el correo es la siguiente:
 
@@ -240,7 +237,7 @@ adminCoder@coder.com
 adminCod3r123
 ```
 
-## Estructura general del proyecto (directorios relevantes para el desafío)
+## Estructura general del proyecto
 
 Aquí tienes la estructura del proyecto con descripciones para cada directorio:
 
