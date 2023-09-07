@@ -60,6 +60,12 @@ node index.js -m staging -p FILESYSTEM
 
 Implementación de un sistema de autorización que delimita el acceso en los siguientes endpoints:
 
+<small>Directorio de referencia del middleware de autorización </small>
+
+`/src/routes/router.js`
+
+Características del middleware de autorización:
+
 - Sólo el administrador puede crear, actualizar y
   eliminar productos.
 
