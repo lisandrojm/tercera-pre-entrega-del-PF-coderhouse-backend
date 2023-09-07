@@ -189,7 +189,7 @@ adminCod3r123
 
 ## Video Testing
 
-## Estructura del proyecto (directorios relevantes para el desafío)
+## Estructura general del proyecto (directorios relevantes para el desafío)
 
 Aquí tienes la estructura del proyecto con descripciones para cada directorio:
 
@@ -240,6 +240,11 @@ El proyecto utiliza las siguientes dependencias:
 - **Passport-github2 (v0.1.12):** Estrategia de autenticación para Passport usando OAuth 2.0 con GitHub.
 - **Passport-local (v1.0.0):** Estrategia de autenticación para Passport basada en credenciales locales.
 - **Jsonwebtoken (v9.0.1):** Biblioteca para generar y verificar tokens JWT.
+- **Passport-jwt (v4.0.1):** Estrategia de autenticación para Passport que utiliza tokens JWT (JSON Web Tokens) para la autenticación de usuarios.
+- **Commander (v11.0.0):** Biblioteca para crear interfaces de línea de comandos interactivas en Node.js.
+- **Twilio (v4.16.0):** Biblioteca para enviar y recibir mensajes de texto y realizar llamadas telefónicas a través de la API de Twilio.
+- **Nodemailer (v6.9.4):** Biblioteca para enviar correos electrónicos desde una aplicación Node.js.
+- **Faker (v5.5.3):** Biblioteca para generar datos falsos como nombres, direcciones, correos electrónicos, etc., útil para pruebas y desarrollo.
 
 ## DevDependencies
 
