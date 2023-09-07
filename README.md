@@ -140,7 +140,12 @@ Ruta que permite finalizar el proceso de compra de dicho carrito con las siguien
 
 En la ruta /:cid/purchasecart se implementó el envío de un correo por medio de la función purchaseCartMail desde el cliente.
 
-## Ver video
+## Video de test de envío de correos
+
+
+https://github.com/lisandrojm/tercera_pre_entrega_del_PF/assets/35199683/f5b2c8c9-145f-4354-b3aa-fff475d44c18
+
+
 
 La información que incluye el correo es la siguiente:
 
