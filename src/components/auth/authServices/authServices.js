@@ -23,7 +23,6 @@ class AuthServices {
       }
 
       /* Repository */
-      /* const existingUser = await User.findOne({ email: email }); */
       const existingUser = await usersServices.findOne({ email: email });
 
       if (existingUser) {
@@ -47,7 +46,6 @@ class AuthServices {
       });
 
       /* Repository */
-      /* await userCart.save(); */
       await cartsServices.save(userCart);
 
       savedUser.cart = userCart._id;
@@ -57,7 +55,6 @@ class AuthServices {
       const token = await JWTService.generateJwt({ id: savedUser._id });
 
       /* Repository */
-      /* let updatedUser = await User.findByIdAndUpdate(newUser._id, { token }, { new: true }); */
       let updatedUser = await usersServices.findByIdAndUpdate(savedUser._id, { token }, { new: true });
       console.log('~~~User registrado~~~', updatedUser);
       return res.sendCreated({
@@ -84,9 +81,6 @@ class AuthServices {
         return { status: 200, success: true, response: adminUser, isAdminLogin: true };
       } else {
         /* Repository */
-        /* let user = await User.findOne({
-          email: email,
-        }); */
         let user = await usersServices.findOne({
           email: email,
         });
@@ -115,7 +109,7 @@ class AuthServices {
   /* //////////////////////////////////// */
   logout = async (req, res) => {
     try {
-      res.clearCookie('jwt'); // Borra la cookie 'jwt'
+      res.clearCookie('jwt');
       await new Promise((resolve, reject) => {
         req.session.destroy((err) => {
           if (err) {

@@ -6,7 +6,7 @@
 const { Product } = require('../../../models/products');
 
 /* Repository */
-const { cartsServices, productsServices } = require('../../../repositories/index');
+const { productsServices } = require('../../../repositories/index');
 
 class ProductsServices {
   getAllProducts = async (limit, page, sort, query, res) => {
@@ -24,7 +24,6 @@ class ProductsServices {
           : { category: query }
         : {};
       /* Repository */
-      /* const result = await Product.paginate(filter, options); */
       const result = await productsServices.paginate(filter, options);
       console.log('~~~getAllProducts productServices.paginate result~~~', result);
       if (page && !/^\d+$/.test(page)) {
@@ -58,7 +57,6 @@ class ProductsServices {
         return res.sendUserError('Faltan campos obligatorios');
       } else {
         /* Repository */
-        /* const existingProduct = await Product.findOne({ code: code }); */
         const existingProduct = await productsServices.findOne({ code: code });
         if (existingProduct) {
           return res.sendUserError('Ya existe un producto con el mismo código');
@@ -73,7 +71,6 @@ class ProductsServices {
             thumbnails: images && images.length > 0 ? images.map((image) => image.filename) : [],
           });
           /* Repository */
-          /*await newProduct.save(); */
           await productsServices.save(newProduct);
           req.app.io.emit('newProduct', newProduct);
           const data = newProduct;
@@ -88,7 +85,6 @@ class ProductsServices {
   getProductById = async (pid, res) => {
     try {
       /* Repository */
-      /* const product = await Product.findById(pid); */
       const product = await productsServices.findById(pid);
 
       if (!product) {
@@ -111,7 +107,6 @@ class ProductsServices {
         return res.sendUserError(`Los siguientes campos no se pueden modificar: ${invalidFields.join(', ')}`);
       } else {
         /* Repository */
-        /* const updatedProduct = await Product.findByIdAndUpdate(pid, updateFields, { new: true }); */
         const updatedProduct = await productsServices.findByIdAndUpdate(pid, updateFields, { new: true });
 
         if (!updatedProduct) {
@@ -131,7 +126,6 @@ class ProductsServices {
   deleteProduct = async (pid, res, req) => {
     try {
       /* Repository */
-      /* const deletedProduct = await Product.findByIdAndDelete(pid); */
       const deletedProduct = await productsServices.findByIdAndDelete(pid);
 
       if (!deletedProduct) {
@@ -158,11 +152,10 @@ class ProductsServices {
           ? {
               $or: [{ category: query }, { stock: 0 }],
             }
-          : { category: query } // Búsqueda por categoría exacta
+          : { category: query }
         : {};
 
       /* Repository */
-      /* const result = await Product.paginate(filter, options); */
       const result = await productsServices.paginate(filter, options);
       console.log('~~~getProducts productServices.paginate result~~~', result);
 
@@ -215,11 +208,10 @@ class ProductsServices {
           ? {
               $or: [{ category: query }, { stock: 0 }],
             }
-          : { category: query } // Búsqueda por categoría exacta
+          : { category: query }
         : {};
 
       /* Repository */
-      /* const result = await Product.paginate(filter, options); */
       const result = await productsServices.paginate(filter, options);
       console.log('~~~getProducts productServices.paginate result~~~', result);
 
@@ -273,11 +265,10 @@ class ProductsServices {
           ? {
               $or: [{ category: query }, { stock: 0 }],
             }
-          : { category: query } // Búsqueda por categoría exacta
+          : { category: query }
         : {};
 
       /* Repository */
-      /* const result = await Product.paginate(filter, options); */
       const result = await productsServices.paginate(filter, options);
       console.log('~~~getRealTimeProducts productServices.paginate result~~~', result);
 
@@ -333,7 +324,6 @@ class ProductsServices {
         : {};
 
       /* Repository */
-      /* const result = await Product.paginate(filter, options); */
       const result = await productsServices.paginate(filter, options);
       console.log('~~~getRealTimeProducts productServices.paginate result~~~', result);
 

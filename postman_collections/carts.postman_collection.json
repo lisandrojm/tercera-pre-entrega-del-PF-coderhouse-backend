@@ -71,7 +71,7 @@
 					"variable": [
 						{
 							"key": "cid",
-							"value": "cide98d"
+							"value": "64e48a636b1663343df3ed73"
 						}
 					]
 				}
@@ -104,11 +104,11 @@
 					"variable": [
 						{
 							"key": "cid",
-							"value": "cide98d"
+							"value": "24d8db35bb926211d7e54a01"
 						},
 						{
 							"key": "pid ",
-							"value": "pid155a"
+							"value": "64b085999d87fedd08b85709"
 						}
 					]
 				}
@@ -144,7 +144,7 @@
 					"variable": [
 						{
 							"key": "cid",
-							"value": "pid155a"
+							"value": "64e740f7f915318d801552ef"
 						}
 					]
 				}
@@ -173,11 +173,11 @@
 					"variable": [
 						{
 							"key": "cid",
-							"value": "64afd0024d0372d526f8e2dc"
+							"value": "cidc57b"
 						},
 						{
 							"key": "pid ",
-							"value": "64a6a23e2fa68202c17ab65f"
+							"value": "pid155a"
 						}
 					]
 				}
@@ -284,6 +284,34 @@
 						{
 							"key": "cid",
 							"value": "64aee062cae268c789dea5ae"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "purchaseCart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/carts/:cid/purchase",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carts",
+						":cid",
+						"purchase"
+					],
+					"variable": [
+						{
+							"key": "cid",
+							"value": "64f7c7169ced392e8e7083c0"
 						}
 					]
 				}

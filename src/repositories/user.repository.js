@@ -10,6 +10,7 @@ class UsersRepository extends BaseRepository {
   constructor() {
     super(User);
   }
+
   /* Custom findUserById para que haga el populate correctamente en el metodo getProducts\
   de handlebarsServices */
   findUserById = async (id, populateOptions = {}) => {
@@ -25,6 +26,7 @@ class UsersRepository extends BaseRepository {
       throw error;
     }
   };
+
   /* Custom createUser para aplicar DTO en la cracion del usuario  de handlebarsServices */
   createUserDTO = async (user) => {
     try {
@@ -39,21 +41,7 @@ class UsersRepository extends BaseRepository {
       throw error;
     }
   };
-  /*   getUserWithCurrentDTO = async (userId) => {
-    try {
-      const user = await this.model.findById(userId);
-      if (!user) {
-        return null;
-      }
 
-      const currentDTO = new CurrentDTO(user);
-      console.log('DTO createUser running', currentDTO);
-
-      return currentDTO;
-    } catch (error) {
-      throw error;
-    }
-  }; */
   getUserWithCurrentDTO = async (user) => {
     try {
       const currentDTO = new CurrentDTO(user);

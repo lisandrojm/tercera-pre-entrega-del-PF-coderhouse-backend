@@ -1,12 +1,20 @@
+/* ************************************************************************** */
+/* /src/scripts/generateFakerProducts.js - Contiene las función para crear productos
+en el de que no existan en la base de datos.
+/* ************************************************************************** */
+
 const faker = require('faker');
 const { Product } = require('../models/products'); // Importa tu modelo de Producto
+const { productsServices } = require('../repositories/index');
 
 const NUM_FAKE_PRODUCTS = 20; // Ajusta la cantidad de productos falsos que deseas generar
 
 async function generateFakeProducts() {
   try {
     // Verifica si ya existen productos en la base de datos
-    const existingProductsCount = await Product.countDocuments();
+    /* Repository */
+    /* const existingProductsCount = await Product.countDocuments(); */
+    const existingProductsCount = await productsServices.countDocuments();
 
     if (existingProductsCount === 0) {
       // Si no existen productos en la base de datos, genera productos falsos
@@ -19,7 +27,8 @@ async function generateFakeProducts() {
           stock: faker.datatype.number({ min: 0, max: 100 }),
           category: faker.commerce.department(),
         });
-        await fakeProduct.save();
+        /* await fakeProduct.save(); */
+        await productsServices.save(fakeProduct);
       }
 
       console.log('~~~Productos creados exitosamente con Faker.~~~');

@@ -47,7 +47,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"first_name\": \"Postman first_name\",\n  \"last_name\": \"Postman last_name\",\n  \"email\": \"postman@correo.com\",\n  \"age\": 25,\n  \"password\": \"1234\"\n}\n",
+					"raw": "{\n  \"first_name\": \"Postman first_name\",\n  \"last_name\": \"Postman last_name1\",\n  \"email\": \"postma@correo.com\",\n  \"age\": 25,\n  \"password\": \"1234\"\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -55,7 +55,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/sessions/useradmin/registerpasssport",
+					"raw": "http://localhost:8080/api/session/useradmin/register",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -63,9 +63,9 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"sessions",
+						"session",
 						"useradmin",
-						"registerpasssport"
+						"register"
 					]
 				}
 			},
@@ -173,7 +173,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/sessions/useradmin/:uid",
+					"raw": "http://localhost:8080/api/session/useradmin/:uid",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -181,14 +181,14 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"sessions",
+						"session",
 						"useradmin",
 						":uid"
 					],
 					"variable": [
 						{
 							"key": "uid",
-							"value": "64bf425a84e34da9c1bab080"
+							"value": "64e48b02516ab930e4b5386b"
 						}
 					]
 				}

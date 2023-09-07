@@ -1,5 +1,5 @@
 /* ************************************************************************** */
-/* /src/repositories/messages.repository.js */
+/* /src/repositories/carts.repository.js */
 /* ************************************************************************** */
 
 const { Cart } = require('../models/carts');

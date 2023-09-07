@@ -18,7 +18,6 @@ class UsersServices {
   getUsers = async (res) => {
     try {
       /* Repository */
-      /* const users = await User.find(); */
       const users = await usersServices.findAll();
       const data = users;
       return res.sendSuccess({ message: 'Todos los usuarios', payload: data });
@@ -35,7 +34,6 @@ class UsersServices {
         return res.sendServerError('Faltan campos obligatorios');
       }
       /* Repository */
-      /* const existingUser = await User.findOne({ email: email }); */
       const existingUser = await usersServices.findOne({ email: email });
 
       if (existingUser) {
@@ -51,7 +49,6 @@ class UsersServices {
       });
 
       /* Repository */
-      /* await newUser.save(); */
       await usersServices.save(newUser);
 
       const userCart = new Cart({
@@ -60,7 +57,6 @@ class UsersServices {
       });
 
       /* Repository */
-      /* await userCart.save(); */
       await cartsServices.save(userCart);
 
       newUser.cart = userCart._id;
@@ -76,7 +72,6 @@ class UsersServices {
   recoveryUser = async ({ email, password, res }) => {
     try {
       /* Repository */
-      /* let user = await User.findOne({ */
       let user = await usersServices.findOne({
         email: email,
       });
@@ -86,7 +81,6 @@ class UsersServices {
       }
 
       /* Repository */
-      /* let data = await User.findByIdAndUpdate(user._id, { password: createHash(password) }, { new: true }); */
       let data = await usersServices.findByIdAndUpdate(user._id, { password: createHash(password) }, { new: true });
 
       return res.sendSuccess({ message: 'Contraseña actualizada correctamente', payload: data });
@@ -98,7 +92,6 @@ class UsersServices {
   getUserById = async (uid, res) => {
     try {
       /* Repository */
-      /* const user = await User.findById(uid); */
       const user = await usersServices.findById(uid);
 
       if (!user) {
@@ -124,7 +117,6 @@ class UsersServices {
       }
 
       /* Repository */
-      /* const updatedUser = await User.findByIdAndUpdate(uid, updateFields, { new: true }); */
       const updatedUser = await usersServices.findByIdAndUpdate(uid, updateFields, { new: true });
 
       if (!updatedUser) {
@@ -144,7 +136,6 @@ class UsersServices {
   deleteUser = async (uid, res, req) => {
     try {
       /* Repository */
-      /* const deletedUser = await User.findByIdAndDelete(uid); */
       const deletedUser = await usersServices.findByIdAndDelete(uid);
 
       if (!deletedUser) {

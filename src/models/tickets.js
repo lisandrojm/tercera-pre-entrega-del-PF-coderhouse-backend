@@ -2,6 +2,7 @@
 /* /src/models/tickets.js - Mongoose-definición de un esquema de tickets y 
 creación de un modelo correspondiente*/
 /* ************************************************************************** */
+
 const { Schema, model } = require('mongoose');
 
 const ticketSchema = new Schema(

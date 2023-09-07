@@ -26,7 +26,7 @@ class UsersRoutes extends CustomRouter {
     /* ************************************************************************************ */
     /* Public */
     /* ************************************************************************************ */
-    this.get(`${basePath}/`, ['PUBLIC'], usersController.getUsers);
+    this.get(`${basePath}/`, ['ADMIN'], usersController.getUsers);
     this.post(`${basePath}/recovery`, ['PUBLIC'], usersController.recoveryUser);
     /* ************************************************************************************ */
     /* Admin */

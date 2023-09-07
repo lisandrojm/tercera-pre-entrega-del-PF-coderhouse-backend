@@ -19,12 +19,10 @@ class CartsServices {
   initializeCartCollection = async () => {
     try {
       /* Repository */
-      /* const cartCount = await Cart.countDocuments(); */
       const cartCount = await cartsServices.countDocuments();
       console.log('~~~CartCount~~~', cartCount);
       if (cartCount === 0) {
         /* Repository */
-        /* Cart.create({ products: [] }); */
         await cartsServices.create({ products: [] });
         console.log('Colección "carts" inicializada correctamente');
       }
@@ -36,7 +34,6 @@ class CartsServices {
   getCarts = async (res) => {
     try {
       /* Repository */
-      /* const carts = await Cart.find(); */
       const carts = await cartsServices.findAll();
       const data = carts;
       return res.sendSuccess({
@@ -53,7 +50,6 @@ class CartsServices {
   addCart = async (res) => {
     try {
       /* Repository */
-      /* const newCart = await Cart.create({ products: [] }); */
       const newCart = await cartsServices.create({ products: [] });
       const data = newCart;
       return res.sendCreated({
@@ -70,7 +66,6 @@ class CartsServices {
   getCartProductById = async (cid, res) => {
     try {
       /* Repository */
-      /*       const cart = await Cart.findById(cid).populate('products.productId'); */
       const cart = await cartsServices.findById(cid, { path: 'products.productId' });
       console.log('POPULATE', cart);
       if (!cart) {
@@ -91,14 +86,12 @@ class CartsServices {
   addProductToCart = async (cid, pid, quantity, res) => {
     try {
       /* Repository */
-      /* const cart = await Cart.findById(cid); */
       const cart = await cartsServices.findById(cid);
       if (!cart) {
         return res.sendNotFound('Carrito no encontrado');
       }
 
       /* Repository */
-      /* const product = await Product.findById(pid); */
       const product = await productsServices.findById(pid);
       if (!product) {
         return res.sendNotFound('ID de Producto no encontrado');
@@ -116,7 +109,6 @@ class CartsServices {
       }
 
       /* Repository */
-      /* await cart.save(); */
       await cartsServices.save(cart);
       const data = cart;
       return res.sendSuccess({
@@ -131,13 +123,11 @@ class CartsServices {
   deleteCart = async (cid, res) => {
     try {
       /* Repository */
-      /* const cart = await Cart.findById(cid); */
       const cart = await cartsServices.findById(cid);
       if (!cart) {
         return res.sendNotFound('Carrito no encontrado');
       }
       /* Repository */
-      /* await cart.deleteOne(); */
       await cartsServices.deleteOne(cart);
       const data = cart;
       return res.sendSuccess({
@@ -152,7 +142,6 @@ class CartsServices {
   deleteProductFromCart = async (cid, pid, res) => {
     try {
       /* Repository */
-      /* const cart = await Cart.findById(cid); */
       const cart = await cartsServices.findById(cid);
       console.log('cid', cid);
       if (!cart) {
@@ -166,7 +155,6 @@ class CartsServices {
 
       cart.products.splice(productIndex, 1);
       /* Repository */
-      /* await cart.save(); */
       await cartsServices.save(cart);
       const data = cart;
       return res.sendSuccess({
@@ -181,7 +169,6 @@ class CartsServices {
   updateCart = async (cid, products, res) => {
     try {
       /* Repository */
-      /* const cart = await Cart.findById(cid); */
       const cart = await cartsServices.findById(cid);
       if (!cart) {
         return res.sendNotFound('Carrito no encontrado');
@@ -189,7 +176,6 @@ class CartsServices {
 
       cart.products = products;
       /* Repository */
-      /* await cart.save(); */
       await cartsServices.save(cart);
       const data = cart;
       return res.sendSuccess({
@@ -204,7 +190,6 @@ class CartsServices {
   updateProductQuantity = async (cid, pid, quantity, res) => {
     try {
       /* Repository */
-      /* const cart = await Cart.findById(cid); */
       const cart = await cartsServices.findById(cid);
       if (!cart) {
         return res.sendNotFound('Carrito no encontrado');
@@ -217,9 +202,6 @@ class CartsServices {
 
       cart.products[productIndex].quantity = quantity;
       /* Repository */
-      /* await cart.save(); */
-      await cartsServices.save(cart);
-      const data = cart;
       return res.sendSuccess({
         message: 'Cantidad de producto actualizada correctamente',
         payload: data,
@@ -232,7 +214,6 @@ class CartsServices {
   deleteAllProductsFromCart = async (cid, res) => {
     try {
       /* Repository */
-      /* const cart = await Cart.findByIdAndUpdate(cid, { $set: { products: [] } }, { new: true }); */
       const cart = await cartsServices.findByIdAndUpdate(cid, { $set: { products: [] } }, { new: true });
       if (!cart) {
         return res.sendNotFound('Carrito no encontrado');

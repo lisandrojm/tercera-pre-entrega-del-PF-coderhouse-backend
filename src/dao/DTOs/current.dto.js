@@ -1,5 +1,5 @@
 /* ************************************************************************** */
-/* /src/dao/DTOs/current.dto.js - configuración de variables de entorno */
+/* /src/dao/DTOs/current.dto.js  */
 /* ************************************************************************** */
 
 class CurrentDTO {

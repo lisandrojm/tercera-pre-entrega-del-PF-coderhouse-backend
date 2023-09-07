@@ -1,5 +1,6 @@
 /* ************************************************************************** */
-/* /src/models/carts.js - Mongoose-definición de un esquema de carrito y creación de un modelo correspondiente */
+/* /src/models/carts.js - Mongoose-definición de un esquema de carrito y creación
+ de un modelo correspondiente */
 /* ************************************************************************** */
 
 const { Schema, model } = require('mongoose');

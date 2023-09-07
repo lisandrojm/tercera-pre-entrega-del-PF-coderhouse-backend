@@ -14,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"first_name\": \"Postman first_name\",\r\n  \"last_name\": \"Postman last_name\",\r\n  \"email\": \"postman24@correo.com\",\r\n  \"age\": 25,\r\n  \"password\": \"1234\"\r\n}",
+					"raw": "{\"first_name\": \"user\",\r\n\"last_name\": \"user\",\r\n\"email\": \"u21222@correo.com\",\r\n\"age\": 33,\r\n\"password\": \"2222\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -53,7 +53,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/session/auth/register",
+					"raw": "http://localhost:8080/api/session/auth/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -63,7 +63,7 @@
 						"api",
 						"session",
 						"auth",
-						"register"
+						"login"
 					]
 				}
 			},

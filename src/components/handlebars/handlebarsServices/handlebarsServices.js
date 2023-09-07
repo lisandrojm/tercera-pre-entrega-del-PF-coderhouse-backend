@@ -73,7 +73,6 @@ class HandlebarsServices {
     try {
       const products = await ProductsServices.getProducts(limit, page, sort, query, res);
       /* Repository */
-      /* const user = await User.findById(userData._id).populate('cart'); */
       const user = await usersServices.findUserById(userData._id, { path: 'cart' });
       console.log('~~~getProducts Populate userServices.findUserByID ~~~', user);
 
@@ -193,7 +192,6 @@ class HandlebarsServices {
   getCartProductById = async (cid, res, userData) => {
     try {
       /* Repository */
-      /* const cart = await Cart.findById(cid).populate('products.productId', '-__v'); */
       const cart = await cartsServices.findCartById(cid, { path: 'products.productId', select: '-__v' });
       console.log('~~~getCartProductById Populate findById ~~~', cart);
       const formattedCart = {
