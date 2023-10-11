@@ -1,7 +1,7 @@
 {
-  "name": "desafio_refactor-a-nuetro-login",
+  "name": "tercera_pre_entrega_del_PF",
   "version": "1.0.0",
-  "description": "Primera entrega del proyecto final del curso de backend de Coderhouse",
+  "description": "Tercera pre-entrega del proyecto final del curso de backend de Coderhouse",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
